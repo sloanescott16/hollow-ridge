@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hollow Ridge">
+<meta name="theme-color" content="#1b2230">
+<title>Hollow Ridge</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <section id="scr-title" class="screen active">
+    <h1>Hollow<br>Ridge</h1>
+    <p class="tag">Find them before they find you.</p>
+    <button id="btn-play" class="big">Play</button>
+    <button id="btn-armoury" class="big alt">Armoury</button>
+    <button id="btn-how" class="big alt">How to play</button>
+    <button id="btn-sound" class="small">Sound: off</button>
+    <p class="marks-line">Marks: <b id="marks-title">0</b></p>
+  </section>
+
+  <section id="scr-levels" class="screen">
+    <div class="bar"><button class="back" data-go="scr-title">Back</button><h2>Valleys</h2></div>
+    <div id="level-list"></div>
+  </section>
+
+  <section id="scr-armoury" class="screen">
+    <div class="bar"><button class="back" data-go="scr-title">Back</button><h2>Armoury</h2></div>
+    <p class="marks-line">Marks: <b id="marks-arm">0</b></p>
+    <h3>Shooter</h3><div id="char-list" class="pick"></div>
+    <h3>Rifle</h3><div id="rifle-list" class="pick"></div>
+    <h3>Upgrades</h3><div id="upg-list"></div>
+  </section>
+
+  <section id="scr-how" class="screen">
+    <div class="bar"><button class="back" data-go="scr-title">Back</button><h2>How to play</h2></div>
+    <div class="how">
+      <p>Enemy shooters hide among the spots across the valley. You cannot see them.</p>
+      <p><b>Hold</b> on the valley to lean out of cover. <b>Drag</b> to aim. <b>Release on a spot</b> to fire. Release anywhere else to duck back.</p>
+      <p>While you are out, the <b>enemy aim bar</b> fills. If it fills, you are hit. Duck before it does.</p>
+      <p>Watch for a <b>glint</b> of glass while you lean out. A miss marks the spot <b>cold</b> (blue: nobody here or next to it) or <b>warm</b> (orange: somebody is right next to it).</p>
+      <p>Each cover sees a different stretch. Grey spots are out of view. <b>Tap a cover</b> below to move. Moving uses your turn.</p>
+      <p>When you fire, they see your flash and will aim faster at that cover next time. Their shots chip your cover and their flash gives them away.</p>
+    </div>
+  </section>
+
+  <section id="scr-game" class="screen">
+    <div id="hud">
+      <button id="btn-quit" class="small">Menu</button>
+      <div id="hud-level">Valley 1</div>
+      <div id="hud-hp"></div>
+      <div id="hud-ammo"></div>
+    </div>
+    <div id="field-wrap"><canvas id="field"></canvas></div>
+    <div id="aimbar"><div id="aimfill"></div><span id="aimlabel">Enemy aim</span></div>
+    <div id="msg">Hold on the valley to lean out.</div>
+    <div id="covers">
+      <button class="cover" data-i="0">Left<span class="pips"></span></button>
+      <button class="cover" data-i="1">Middle<span class="pips"></span></button>
+      <button class="cover" data-i="2">Right<span class="pips"></span></button>
+    </div>
+  </section>
+
+  <div id="overlay" class="hidden">
+    <div class="card">
+      <h2 id="ov-title"></h2>
+      <p id="ov-body"></p>
+      <button id="ov-next" class="big">Next valley</button>
+      <button id="ov-retry" class="big alt">Try again</button>
+      <button id="ov-menu" class="big alt">Valleys</button>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
